@@ -1,0 +1,23 @@
+using Godot;
+using HarmonyLib;
+using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Modding;
+using Logger = MegaCrit.Sts2.Core.Logging.Logger;
+
+namespace AphroditeAncient.AphroditeAncientCode;
+
+[ModInitializer(nameof(Initialize))]
+public partial class AphroditeAncientMainFile : Node
+{
+    public const string ModId = "AphroditeAncient"; //Used for resource filepath
+    public const string ResPath = $"res://{ModId}";
+
+    public static Logger Logger { get; } = new(ModId, LogType.Generic);
+
+    public static void Initialize()
+    {
+        Harmony harmony = new(ModId);
+
+        harmony.PatchAll();
+    }
+}
