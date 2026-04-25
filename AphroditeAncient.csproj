@@ -65,8 +65,6 @@
 
     <ItemGroup>
         <Content Include="AphroditeAncientCode\Ancients\AphroditeAncient.cs.uid"/>
-        <Content Include="Screenshots\Compendium.jpg" />
-        <Content Include="Screenshots\AncientChoices.jpg" />
     </ItemGroup>
 
     <Target Name="CheckDependencyPaths">
