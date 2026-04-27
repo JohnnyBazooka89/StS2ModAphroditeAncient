@@ -17,7 +17,7 @@ public class DifferentLeague : AphroditeAncientRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new(LessDamageKey, 4M)
+        new(LessDamageKey, 3M)
     ];
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer,

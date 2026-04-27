@@ -3,7 +3,7 @@
   "name": "Aphrodite Ancient",
   "author": "JohnnyBazooka89",
   "description": "This mod adds Aphrodite from the hit game Hades 2 as a new Ancient.",
-  "version": "v0.1.2",
+  "version": "v0.1.3",
   "has_pck": true,
   "has_dll": true,
   "dependencies": [
