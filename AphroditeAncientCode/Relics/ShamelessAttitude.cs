@@ -65,7 +65,7 @@ public class ShamelessAttitude : AphroditeAncientRelic
         Creature? dealer,
         CardModel? cardSource)
     {
-        if (!props.IsPoweredAttack() || cardSource == null || dealer != Owner.Creature && dealer != Owner.Osty)
+        if (!props.IsPoweredAttack() || cardSource == null || dealer != Owner.Creature)
             return 1M;
 
         return Status == RelicStatus.Active ? 5M / 3M : 4M / 3M;

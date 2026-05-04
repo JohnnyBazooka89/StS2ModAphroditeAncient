@@ -1,5 +1,5 @@
 {
   "APHRODITEANCIENT-CHARM_POWER.title": "Charm",
-  "APHRODITEANCIENT-CHARM_POWER.description": "Whenever it obtains [blue]6[/blue] stacks, it's stunned.",
-  "APHRODITEANCIENT-CHARM_POWER.smartDescription": "Whenever it obtains [blue]{StacksToStun}[/blue] stacks, it's stunned."
+  "APHRODITEANCIENT-CHARM_POWER.description": "Whenever this creature obtains [blue]6[/blue] stacks, it's stunned.",
+  "APHRODITEANCIENT-CHARM_POWER.smartDescription": "Whenever this creature obtains [blue]{StacksToStun}[/blue] stacks, it's stunned."
 }
