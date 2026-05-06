@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Nodes.Events;
 using System.Runtime.CompilerServices;
 
 [HarmonyPatch(typeof(NAncientEventLayout), "SetDialogueLineAndAnimate")]
-public static class AncientEventLayout_XOffsetPatch
+public static class NAncientEventLayout_SetDialogueLineAndAnimate_Patch
 {
     private const float XOffset = 150f;
 
