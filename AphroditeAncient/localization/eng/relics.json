@@ -15,7 +15,7 @@
   "APHRODITEANCIENT-HEALTHY_REBOUND.description": "At the start of each Normal/Elite/Boss combat, heal [blue]5[/blue]/[blue]15[/blue]/[blue]Full[/blue] HP.",
   "APHRODITEANCIENT-HEALTHY_REBOUND.flavor": "\"Though don't despair! Your heart yet beats, doesn't it?\"",
   "APHRODITEANCIENT-HEARTBREAK_STRIKE.title": "Heartbreak Strike",
-  "APHRODITEANCIENT-HEARTBREAK_STRIKE.description": "At the start of each combat, gain [blue]{StrengthPower}[/blue] Strength. Your Attacks apply [blue]{WeakPower}[/blue] [gold]Weak[/gold] on every hit.",
+  "APHRODITEANCIENT-HEARTBREAK_STRIKE.description": "Your Attacks deal [blue]{MoreDamagePercent}%[/blue] more damage for each [gold]Weak[/gold] on the enemy and apply [blue]{WeakPower}[/blue] [gold]Weak[/gold] on every hit.",
   "APHRODITEANCIENT-HEARTBREAK_STRIKE.flavor": "\"At this rate, you'll end up breaking more hearts than me!\"",
   "APHRODITEANCIENT-NERVOUS_WRECK.title": "Nervous Wreck",
   "APHRODITEANCIENT-NERVOUS_WRECK.description": "Whenever you apply debuffs on enemies, apply twice as much.",

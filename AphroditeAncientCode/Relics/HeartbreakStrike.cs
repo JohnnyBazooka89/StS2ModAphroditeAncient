@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.RelicPools;
-using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AphroditeAncient.AphroditeAncientCode.Relics;
@@ -16,10 +15,13 @@ namespace AphroditeAncient.AphroditeAncientCode.Relics;
 [Pool(typeof(EventRelicPool))]
 public class HeartbreakStrike : AphroditeAncientRelic
 {
+    private const string MoreDamagePercentKey = "MoreDamagePercent";
+
     public override RelicRarity Rarity => RelicRarity.Ancient;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new(MoreDamagePercentKey, 10M),
         new PowerVar<StrengthPower>(3M),
         new PowerVar<WeakPower>(1M)
     ];
@@ -30,13 +32,18 @@ public class HeartbreakStrike : AphroditeAncientRelic
         HoverTipFactory.FromPower<WeakPower>()
     ];
 
-    public override async Task AfterRoomEntered(AbstractRoom room)
+    public override Decimal ModifyDamageMultiplicative(
+        Creature? target,
+        Decimal amount,
+        ValueProp props,
+        Creature? dealer,
+        CardModel? cardSource)
     {
-        if (room is not CombatRoom)
-            return;
-        Flash();
-        await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner.Creature,
-            DynamicVars.Strength.BaseValue, Owner.Creature, null);
+        if (!props.IsPoweredAttack() || cardSource == null || dealer != Owner.Creature || target == null)
+            return 1M;
+
+        int weakAmount = target.GetPower<WeakPower>()?.Amount ?? 0;
+        return 1M + DynamicVars[MoreDamagePercentKey].BaseValue / 100M * weakAmount;
     }
 
     public override async Task AfterDamageGiven(
