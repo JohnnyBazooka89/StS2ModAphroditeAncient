@@ -9,7 +9,7 @@ The mod is available in:
 - English
 
 ## 📦 Dependencies
-- BaseLib version 3.0.9 or newer.
+- BaseLib version 3.1.2 or newer.
 
 ## ⚙️ Installation
 1. Go to the [Releases](https://github.com/JohnnyBazooka89/StS2ModAphroditeAncient/releases) page on GitHub and download the latest version.
