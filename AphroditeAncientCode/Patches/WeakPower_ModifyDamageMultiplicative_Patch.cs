@@ -19,12 +19,12 @@ public static class WeakPower_ModifyDamageMultiplicative_Patch
         CardModel? cardSource,
         ref decimal __result)
     {
-        BrokenResolve? stickyHand = target?.Player?.GetRelic<BrokenResolve>();
-        if (stickyHand == null)
+        BrokenResolve? brokenResolve = target?.Player?.GetRelic<BrokenResolve>();
+        if (brokenResolve == null || __result is < 0.5M or > 1M)
         {
             return;
         }
-        
+
         decimal newValue =
             dealer != __instance.Owner || !props.IsPoweredAttack()
                 ? __result

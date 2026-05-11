@@ -39,7 +39,8 @@ public class HeartbreakStrike : AphroditeAncientRelic
         Creature? dealer,
         CardModel? cardSource)
     {
-        if (!props.IsPoweredAttack() || cardSource == null || dealer != Owner.Creature || target == null)
+        if (!props.IsPoweredAttack() || cardSource == null || (dealer != Owner.Creature && dealer != Owner.Osty) ||
+            target == null)
             return 1M;
 
         int weakAmount = target.GetPower<WeakPower>()?.Amount ?? 0;
