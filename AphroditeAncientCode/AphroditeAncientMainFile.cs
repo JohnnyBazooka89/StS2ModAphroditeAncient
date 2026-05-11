@@ -9,7 +9,7 @@ namespace AphroditeAncient.AphroditeAncientCode;
 [ModInitializer(nameof(Initialize))]
 public partial class AphroditeAncientMainFile : Node
 {
-    public const string ModId = "AphroditeAncient"; //Used for resource filepath
+    private const string ModId = "AphroditeAncient"; //Used for resource filepath
     public const string ResPath = $"res://{ModId}";
 
     public static Logger Logger { get; } = new(ModId, LogType.Generic);
