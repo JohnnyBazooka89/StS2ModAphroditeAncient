@@ -12,13 +12,15 @@ public class HealthyRebound : AphroditeAncientRelic
 {
     private const string NormalCombatHealKey = "NormalCombatHeal";
     private const string EliteCombatHealKey = "EliteCombatHeal";
-    
+    private const string BossCombatHealKey = "BossCombatHeal";
+
     public override RelicRarity Rarity => RelicRarity.Ancient;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new(NormalCombatHealKey, 5M),
-        new(EliteCombatHealKey, 15M)
+        new(EliteCombatHealKey, 15M),
+        new(BossCombatHealKey, 25M)
     ];
 
     public override async Task AfterRoomEntered(AbstractRoom room)
@@ -31,7 +33,7 @@ public class HealthyRebound : AphroditeAncientRelic
         int amountToHeal;
         if (room.RoomType == RoomType.Boss)
         {
-            amountToHeal = Owner.Creature.MaxHp;
+            amountToHeal = DynamicVars[BossCombatHealKey].IntValue;
         }
         else if (room.RoomType == RoomType.Elite)
         {
@@ -41,6 +43,7 @@ public class HealthyRebound : AphroditeAncientRelic
         {
             amountToHeal = DynamicVars[NormalCombatHealKey].IntValue;
         }
+
         Flash();
         await CreatureCmd.Heal(Owner.Creature, amountToHeal);
     }

@@ -59,14 +59,6 @@
         <None Include="AphroditeAncient/**"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="AphroditeAncient\images\card_portraits\big\"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Content Include="AphroditeAncientCode\Ancients\AphroditeAncient.cs.uid"/>
-    </ItemGroup>
-
     <Target Name="CheckDependencyPaths">
         <Error
                 Text=" Slay the Spire 2 data not found at path '$(Sts2DataDir)'"

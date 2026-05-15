@@ -2,7 +2,7 @@
 
 ## 📄 Description
 
-This mod introduces a new Ancient, **Aphrodite** from the hit game Hades 2, who can appear in Act 3 and offers a selection of Relics that focus on Weak, Charm, debuffs, healing, dealing more Attack damage and other things.
+This mod introduces a new Ancient, **Aphrodite** from the hit game Hades 2, who can appear in Act 3 and offers a selection of Relics that focus on: Weak, Charm, debuffs, healing, dealing more Attack damage and other things.
 
 ## 🌐 Localization
 The mod is available in:
