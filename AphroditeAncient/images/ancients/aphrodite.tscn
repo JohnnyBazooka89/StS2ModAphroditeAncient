@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://culrsr02pokij"]
 
-[ext_resource type="Texture2D" uid="uid://bxa6vlqeby20" path="res://AphroditeAncient/images/ancients/vfx/light.png" id="2_t0ynh"]
-[ext_resource type="Texture2D" uid="uid://d2srbops1xqm0" path="res://AphroditeAncient/images/ancients/vfx/dot.png" id="3_bvpiv"]
+[ext_resource type="Texture2D" uid="uid://bxa6vlqeby20" path="res://AphroditeAncient/images/vfx/light.png" id="2_t0ynh"]
+[ext_resource type="Texture2D" uid="uid://d2srbops1xqm0" path="res://AphroditeAncient/images/vfx/dot.png" id="3_bvpiv"]
 [ext_resource type="Texture2D" uid="uid://c6o8w8bgfuvqg" path="res://AphroditeAncient/images/ancients/aphrodite_placeholder.png" id="3_ljq1i"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://AphroditeAncient/themes/canvas_item_material_additive_shared.tres" id="shared_additive_mat"]
 
