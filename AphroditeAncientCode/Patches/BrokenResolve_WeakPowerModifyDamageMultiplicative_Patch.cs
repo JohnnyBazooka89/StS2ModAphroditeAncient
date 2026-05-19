@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace AphroditeAncient.AphroditeAncientCode.Patches;
 
 [HarmonyPatch(typeof(WeakPower), nameof(WeakPower.ModifyDamageMultiplicative))]
-public static class WeakPower_ModifyDamageMultiplicative_Patch
+public static class BrokenResolve_WeakPowerModifyDamageMultiplicative_Patch
 {
     public static void Postfix(
         WeakPower __instance,
