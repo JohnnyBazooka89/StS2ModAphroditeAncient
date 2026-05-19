@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Models;
+﻿using System.Reflection.Emit;
+using MegaCrit.Sts2.Core.Models;
 
 namespace AphroditeAncient.AphroditeAncientCode.Patches;
 
@@ -10,31 +11,29 @@ using System.Runtime.CompilerServices;
 [HarmonyPatch(typeof(NAncientEventLayout), "SetDialogueLineAndAnimate")]
 public static class AphroditeAncient_AdjustLayout_Patch
 {
-    private const float XOffset = 150f;
+    private const float XOffset = 185;
+    private const float YOffset = -5f;
+    private const float ScaleAmount = 1.0f;
+    private const float OriginalSpacing = 10f;
 
     private static readonly ConditionalWeakTable<NAncientEventLayout, Box> State = new();
 
-    private sealed class Box
+    private static bool IsTargetEvent(NAncientEventLayout layout)
     {
-        public float BaseContentX;
-        public float BaseContainerWidth;
+        var ancientEvent = Traverse.Create(layout)
+            .Field("_ancientEvent")
+            .GetValue<AncientEventModel>();
 
-        public Box(float baseContentX, float baseContainerWidth)
-        {
-            BaseContentX = baseContentX;
-            BaseContainerWidth = baseContainerWidth;
-        }
+        return ancientEvent.Id == ModelDb.GetId<Ancients.AphroditeAncient>();
     }
 
     static void Prefix(NAncientEventLayout __instance)
     {
+        if (!IsTargetEvent(__instance))
+            return;
+
         var t = Traverse.Create(__instance);
 
-        var ancientEvent = t.Field("_ancientEvent").GetValue<AncientEventModel>();
-
-        if (ancientEvent.Id != ModelDb.GetId<Ancients.AphroditeAncient>())
-            return;
-        
         var content = t.Field("_content").GetValue<VBoxContainer>();
         var contentContainer = t.Field("_contentContainer").GetValue<Control>();
 
@@ -52,10 +51,57 @@ public static class AphroditeAncient_AdjustLayout_Patch
             content.Position.Y
         );
 
-        // Prevent right-side clipping.
+        content.Scale = new Vector2(ScaleAmount, ScaleAmount);
+
+        contentContainer.ClipContents = false;
+
+        float extraWidth = Mathf.Abs(XOffset) * 2f;
+
         contentContainer.Size = new Vector2(
-            state.BaseContainerWidth + Mathf.Abs(XOffset),
+            state.BaseContainerWidth + extraWidth,
             contentContainer.Size.Y
         );
+    }
+
+    private static float GetSpacingForEvent(NAncientEventLayout layout, float originalSpacing)
+    {
+        if (!IsTargetEvent(layout))
+            return originalSpacing;
+
+        return originalSpacing - YOffset;
+    }
+
+    static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    {
+        foreach (var code in instructions)
+        {
+            if (code.opcode == OpCodes.Ldc_R4 &&
+                code.operand is float f &&
+                f == OriginalSpacing)
+            {
+                yield return new CodeInstruction(OpCodes.Ldarg_0);
+                yield return new CodeInstruction(OpCodes.Ldc_R4, OriginalSpacing);
+                yield return CodeInstruction.Call(
+                    typeof(AphroditeAncient_AdjustLayout_Patch),
+                    nameof(GetSpacingForEvent)
+                );
+            }
+            else
+            {
+                yield return code;
+            }
+        }
+    }
+
+    private sealed class Box
+    {
+        public readonly float BaseContainerWidth;
+        public readonly float BaseContentX;
+
+        public Box(float x, float width)
+        {
+            BaseContentX = x;
+            BaseContainerWidth = width;
+        }
     }
 }
