@@ -37,7 +37,7 @@ public class SweetSurrender : AphroditeAncientRelic
         }
 
         Flash();
-        await PowerCmd.Apply<VulnerablePower>(new ThrowingPlayerChoiceContext(), power.Owner, amount, null, null);
-        await PowerCmd.Apply<CharmPower>(new ThrowingPlayerChoiceContext(), power.Owner, amount, null, null);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, power.Owner, amount, null, null);
+        await PowerCmd.Apply<CharmPower>(choiceContext, power.Owner, amount, null, null);
     }
 }
