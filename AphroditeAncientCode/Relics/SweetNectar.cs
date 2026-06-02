@@ -17,7 +17,7 @@ public class SweetNectar : AphroditeAncientRelic
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    public override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(4)
     ];

@@ -15,7 +15,7 @@ public class DifferentLeague : AphroditeAncientRelic
 
     public override RelicRarity Rarity => RelicRarity.Ancient;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    public override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new(LessDamageKey, 3M)
     ];

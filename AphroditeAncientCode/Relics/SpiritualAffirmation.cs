@@ -11,7 +11,7 @@ public class SpiritualAffirmation : AphroditeAncientRelic
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    public override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new MaxHpVar(16),
         new GoldVar(499)

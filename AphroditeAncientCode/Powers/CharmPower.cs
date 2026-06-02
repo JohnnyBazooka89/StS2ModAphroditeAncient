@@ -17,12 +17,12 @@ public class CharmPower : AphroditeAncientPower
 
     public override int DisplayAmount => GetInternalData<Data>().StacksApplied;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    public override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new(StacksToStunKey, 6M)
     ];
 
-    protected override object InitInternalData() => new Data();
+    public override object InitInternalData() => new Data();
 
     public override async Task AfterPowerAmountChanged(
         PlayerChoiceContext choiceContext,

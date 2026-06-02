@@ -21,7 +21,7 @@ public class FlutterFlourish : AphroditeAncientRelic
 
   public override int DisplayAmount => SkillsPlayed;
 
-  protected override IEnumerable<DynamicVar> CanonicalVars =>
+  public override IEnumerable<DynamicVar> CanonicalVars =>
   [
     new CardsVar(4)
   ];

@@ -16,7 +16,7 @@ public class HealthyRebound : AphroditeAncientRelic
 
     public override RelicRarity Rarity => RelicRarity.Ancient;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    public override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new(NormalCombatHealKey, 5M),
         new(EliteCombatHealKey, 15M),

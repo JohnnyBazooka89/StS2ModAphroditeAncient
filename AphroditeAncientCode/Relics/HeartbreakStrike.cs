@@ -19,14 +19,14 @@ public class HeartbreakStrike : AphroditeAncientRelic
 
     public override RelicRarity Rarity => RelicRarity.Ancient;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    public override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new(MoreDamagePercentKey, 10M),
         new PowerVar<StrengthPower>(3M),
         new PowerVar<WeakPower>(1M)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    public override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<StrengthPower>(),
         HoverTipFactory.FromPower<WeakPower>()
