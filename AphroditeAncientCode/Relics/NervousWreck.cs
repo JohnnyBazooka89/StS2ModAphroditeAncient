@@ -12,7 +12,7 @@ public class NervousWreck : AphroditeAncientRelic
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
 
-    public override Decimal ModifyPowerAmountGiven(
+    public override Decimal ModifyPowerAmountGivenMultiplicative(
         PowerModel power,
         Creature giver,
         Decimal amount,
@@ -21,8 +21,8 @@ public class NervousWreck : AphroditeAncientRelic
     {
         return power.Type != PowerType.Debuff || !Owner.Creature.CombatState.Enemies.Contains(target) ||
                giver != Owner.Creature
-            ? amount
-            : 2 * amount;
+            ? 1
+            : 2;
     }
 
     public override Task AfterModifyingPowerAmountGiven(PowerModel power)
